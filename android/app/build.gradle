@@ -1,0 +1,48 @@
+// Project-level build.gradle
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.5.0' // Ensure this is compatible with Java 21
+    }
+}
+
+
+// Module-level build.gradle (android/app/build.gradle)
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 34 // Use the latest SDK version available
+
+    defaultConfig {
+        applicationId "com.example.yourapp" // Change this to your app's ID
+        minSdkVersion 21 // Minimum SDK version your app supports
+        targetSdkVersion 34 // Target SDK version
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21 // Set source compatibility to Java 21
+        targetCompatibility JavaVersion.VERSION_21 // Set target compatibility to Java 21
+    }
+
+    kotlinOptions {
+        jvmTarget = "21" // If you're using Kotlin, set the JVM target to 21
+    }
+
+    packagingOptions {
+        pickFirst '**/*.so' // Adjust packaging options as needed
+    }
+}
+
+dependencies {
+    implementation 'com.google.android.gms:play-services-auth:20.2.0' // Example dependency, adjust as necessary
+    implementation 'androidx.appcompat:appcompat:1.6.1' // Example dependency for appcompat
+}
+
+// Ensure to apply any other necessary plugins or configurations below
